@@ -50,10 +50,17 @@ const Arrow = ({ dir }) => {
 };
 
 const ImageSlider = ({ images }) => {
+  const listItems = images
+    .slice(0, 5)
+    .map(image => <Slide key={image.id} src={image.webformatURL} />);
+  return <ul className="carousel_wrapper">{listItems}</ul>;
+};
+
+const Slide = ({ src }) => {
   return (
-    <ul>
-      <li />
-    </ul>
+    <li className="carousel_item">
+      <img src={src} alt="" />
+    </li>
   );
 };
 
