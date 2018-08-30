@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
 
+const API =
+  "https://pixabay.com/api/?key=9656065-a4094594c34f9ac14c7fc4c39&q=beautiful+landscape&image_type=photo";
+
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +12,17 @@ class Carousel extends React.Component {
       images: [],
       activeImageindex: 0
     };
+  }
+
+  async componentDidMount() {
+    let response = await fetch(API);
+    let imageResponse = await response.json();
+    this.setState({
+      images: imageResponse.hits.map(item => ({
+        webformatURL: item.webformatURL,
+        id: item.id
+      }))
+    });
   }
 
   render() {
