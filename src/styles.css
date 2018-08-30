@@ -1,0 +1,22 @@
+/* reset styles */
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 6px 8px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Ropa Sans;
+  color: #333;
+  font-size: 14px;
+}

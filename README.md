@@ -1,2 +1,0 @@
-# ImageCarousel
-Created with CodeSandbox
