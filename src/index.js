@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Arrow from "./components/Arrow";
 import ImageSlider from "./components/ImageSlider";
+import Title from "./components/Title";
 import "./styles.css";
 
 const API =
@@ -21,7 +22,7 @@ class Carousel extends React.Component {
     let response = await fetch(API);
     let imageResponse = await response.json();
     this.setState({
-      images: imageResponse.hits.map(item => ({
+      images: imageResponse.hits.slice(0, 5).map(item => ({
         webformatURL: item.webformatURL,
         id: item.id
       }))
@@ -30,17 +31,34 @@ class Carousel extends React.Component {
 
   nextClick() {
     // code to handle next click
+    const { activeImageindex } = this.state;
+    const lastIndex = this.state.images.length - 1;
+    let index = activeImageindex === lastIndex ? 0 : activeImageindex + 1;
+    this.setState({
+      activeImageindex: index
+    });
   }
+
   previousClick() {
     //code to handle previous click
+    const { activeImageindex } = this.state;
+    const lastIndex = this.state.images.length - 1;
+    let index = activeImageindex === 0 ? lastIndex : activeImageindex - 1;
+
+    this.setState({
+      activeImageindex: index
+    });
   }
 
   render() {
     return (
       <div className="carousel">
         <Title />
-        <ImageSlider images={this.state.images} />
-        <div className="carousel_arrows">
+        <ImageSlider
+          images={this.state.images}
+          currentIndex={this.state.activeImageindex}
+        />
+        <div className="carousel_actions">
           <Arrow dir="prev" handleClick={this.previousClick} />
           <Arrow dir="next" handleClick={this.nextClick} />
         </div>
@@ -48,10 +66,6 @@ class Carousel extends React.Component {
     );
   }
 }
-
-const Title = () => {
-  return <h1>Carousel Test</h1>;
-};
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Carousel />, rootElement);

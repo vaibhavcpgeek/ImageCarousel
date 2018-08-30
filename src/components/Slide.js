@@ -1,8 +1,8 @@
 import React from "react";
 
-const Slide = ({ src }) => {
+const Slide = ({ src, isActive }) => {
   return (
-    <li className="carousel_item">
+    <li className={`carousel_item ${isActive ? "active" : "inactive"}`}>
       <img src={src} alt="" />
     </li>
   );
