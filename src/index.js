@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Arrow from "./components/Arrow";
+import ImageSlider from "./components/ImageSlider";
 import "./styles.css";
 
 const API =
@@ -46,25 +48,6 @@ class Carousel extends React.Component {
     );
   }
 }
-
-const Arrow = ({ dir, handleClick }) => {
-  return <input type="button" value={dir} />;
-};
-
-const ImageSlider = ({ images }) => {
-  const listItems = images
-    .slice(0, 5)
-    .map(image => <Slide key={image.id} src={image.webformatURL} />);
-  return <ul className="carousel_wrapper">{listItems}</ul>;
-};
-
-const Slide = ({ src }) => {
-  return (
-    <li className="carousel_item">
-      <img src={src} alt="" />
-    </li>
-  );
-};
 
 const Title = () => {
   return <h1>Carousel Test</h1>;

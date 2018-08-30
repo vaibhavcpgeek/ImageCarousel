@@ -35,7 +35,7 @@ body {
   background-color: #fff;
 }
 .carousel_item {
-  width: 200px;
+  width: 250px;
   border: solid 1px #bbb;
 }
 .carousel_item img {
@@ -46,4 +46,24 @@ body {
   display: flex;
   justify-content: center;
   padding: 20px;
+}
+.carousel_arrow {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: solid 1px #000;
+}
+
+.carousel_arrow.next img {
+  transform: rotateY(180);
+}
+
+@media only screen and (max-width: 600px) {
+  .carousel_wrapper {
+    display: block;
+  }
+  .carousel_item,
+  .carousel_item img {
+    width: 100%;
+  }
 }
