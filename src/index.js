@@ -12,8 +12,9 @@ class Carousel extends React.Component {
       images: [],
       activeImageindex: 0
     };
+    this.nextClick = this.nextClick.bind(this);
+    this.previousClick = this.previousClick.bind(this);
   }
-
   async componentDidMount() {
     let response = await fetch(API);
     let imageResponse = await response.json();
@@ -25,27 +26,28 @@ class Carousel extends React.Component {
     });
   }
 
+  nextClick() {
+    // code to handle next click
+  }
+  previousClick() {
+    //code to handle previous click
+  }
+
   render() {
     return (
       <div className="carousel">
         <Title />
         <ImageSlider images={this.state.images} />
-        <Controls />
+        <div className="carousel_arrows">
+          <Arrow dir="prev" handleClick={this.previousClick} />
+          <Arrow dir="next" handleClick={this.nextClick} />
+        </div>
       </div>
     );
   }
 }
 
-const Controls = () => {
-  return (
-    <div className="carousel_arrows">
-      <Arrow dir="prev" />
-      <Arrow dir="next" />
-    </div>
-  );
-};
-
-const Arrow = ({ dir }) => {
+const Arrow = ({ dir, handleClick }) => {
   return <input type="button" value={dir} />;
 };
 
