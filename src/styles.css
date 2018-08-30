@@ -20,3 +20,30 @@ body {
   color: #333;
   font-size: 14px;
 }
+
+/* Component Styles */
+.carousel {
+  width: 100%;
+  border: solid 1px #ccc;
+  background-color: #eee;
+}
+.carousel_wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  padding: 20px;
+  background-color: #fff;
+}
+.carousel_item {
+  width: 200px;
+  border: solid 1px #bbb;
+}
+.carousel_item img {
+  width: 100%;
+  height: 100%;
+}
+.carousel_arrows {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}

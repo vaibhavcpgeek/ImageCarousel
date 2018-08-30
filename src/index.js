@@ -28,19 +28,19 @@ class Carousel extends React.Component {
   render() {
     return (
       <div className="carousel">
-        <Header />
+        <Title />
         <ImageSlider images={this.state.images} />
-        <Footer />
+        <Controls />
       </div>
     );
   }
 }
 
-const Footer = () => {
+const Controls = () => {
   return (
     <div className="carousel_arrows">
-      <Arrow dir="left" />
-      <Arrow dir="right" />
+      <Arrow dir="prev" />
+      <Arrow dir="next" />
     </div>
   );
 };
@@ -64,7 +64,7 @@ const Slide = ({ src }) => {
   );
 };
 
-const Header = () => {
+const Title = () => {
   return <h1>Carousel Test</h1>;
 };
 
